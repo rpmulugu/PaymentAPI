@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
 		System.out.println("Today is: " + todayAsString);
 	
 		tr.setTransactionDate(todayAsString);
-		tr.setTransactionDescription("Loan Amount");
+		tr.setTransactionDescription(addMoney.getDescription());
 		tr.setTransactionStatus("Success");
 		
 		trRepo.save(tr);
