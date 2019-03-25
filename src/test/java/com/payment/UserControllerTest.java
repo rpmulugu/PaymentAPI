@@ -54,9 +54,9 @@ public class UserControllerTest {
 			u1= new User(1L,"abc","abc","abc@gmail.com","1234");
 			a1= new AddMoney();
 			
-			a1.setFromAccountNumber("14");
-			a1.setAmount(200L);
-			a1.setToAccountNumber("13");
+			a1.setFromAccNumber("14");
+			a1.setTransAmount(200L);
+			a1.setToAccNumber("13");
 			
 			User u2= new User(1L,"xyz","zyx","xyz@gmail.com","12345");
 			userlist.add(u1);
