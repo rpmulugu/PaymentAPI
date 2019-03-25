@@ -53,8 +53,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String addMoney(AddMoney addMoney) throws NumberFormatException, ResourceNotFoundException {
-		String fromAccountNumber= addMoney.getFromAccountNumber();
-		Long amount=addMoney.getAmount();
+		String fromAccountNumber= addMoney.getFromAccNumber();
+		Long amount=addMoney.getTransAmount();
 		Account fromAccount=accRepo.findById(new Long(fromAccountNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
 		long balance=fromAccount.getBalance();
 		
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		long newbalance=balance-amount;
 		fromAccount.setBalance(newbalance);
 		
-		String toAccountNumber=addMoney.getToAccountNumber();
+		String toAccountNumber=addMoney.getToAccNumber();
 		Account toAccount=accRepo.findById(new Long(toAccountNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
 		long bal = toAccount.getBalance();
 		long creditedBal= bal+amount;
@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
 		tr.setTransactionStatus("Success");
 		
 		trRepo.save(tr);
-		return addMoney.getAmount()+" Rs. Transfered to Account Number :"+addMoney.getToAccountNumber();
+		return addMoney.getAmount()+" Rs. Transfered to Account Number :"+addMoney.getToAccNumber();
 				
 	}
 
