@@ -16,23 +16,23 @@ public class AddMoney implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name="fromAccountNumber")
-	private String fromAccountNumber;
+	private String fromAccNumber;
 		
 	@Column(name="toAccountNumber")
-	private String toAccountNumber;
+	private String toAccNumber;
 
 	@Id
 	@Column(name="amount")
-	private Long amount;
+	private Long transAmount;
 	
 	@Column(name="description")
 	private String description;
 	
-	public String getToAccountNumber() {
-		return toAccountNumber;
+	public String getToAccNumber() {
+		return toAccNumber;
 	}
-	public void setToAccountNumber(String toAccountNumber) {
-		this.toAccountNumber = toAccountNumber;
+	public void setToAccNumber(String toAccountNumber) {
+		this.toAccNumber = toAccountNumber;
 	}
 	public String getDescription() {
 		return description;
@@ -40,16 +40,16 @@ public class AddMoney implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getFromAccountNumber() {
-		return fromAccountNumber;
+	public String getFromAccNumber() {
+		return fromAccNumber;
 	}
-	public void setFromAccountNumber(String fromAccountNumber) {
-		this.fromAccountNumber = fromAccountNumber;
+	public void setFromAccNumber(String fromAccountNumber) {
+		this.fromAccNumber = fromAccountNumber;
 	}
-	public Long getAmount() {
-		return amount;
+	public Long getTransAmount() {
+		return transAmount;
 	}
-	public void setAmount(Long amount) {
-		this.amount = amount;
+	public void setTransAmount(Long amount) {
+		this.transAmount = amount;
 	}
 }
