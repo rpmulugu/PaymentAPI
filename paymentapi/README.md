@@ -1,2 +1,0 @@
-# PaymentApi
-PaymentAPI
