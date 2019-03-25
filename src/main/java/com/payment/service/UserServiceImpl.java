@@ -85,17 +85,47 @@ public class UserServiceImpl implements UserService {
 		tr.setCredit(amount);
 		tr.setDebit(0L);
 		
-		Date date = Calendar.getInstance().getTime();  
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
-		String strDate = dateFormat.format(date);  
+		String pattern = "dd-MMM-yyyy HH:mm:ss";
+
+		// Create an instance of SimpleDateFormat used for formatting 
+		// the string representation of date according to the chosen pattern
+		DateFormat df = new SimpleDateFormat(pattern);
+
+		// Get the today date using Calendar object.
+		Date today = Calendar.getInstance().getTime();        
+		// Using DateFormat format method we can create a string 
+		// representation of a date with the defined format.
+		String todayAsString = df.format(today);
+
+		// Print it!
+		System.out.println("Today is: " + todayAsString);
 	
-		tr.setTransactionDate(strDate);
+		tr.setTransactionDate(todayAsString);
 		tr.setTransactionDescription("Loan Amount");
 		tr.setTransactionStatus("Success");
 		
 		trRepo.save(tr);
 		return addMoney.getTransAmount()+" Rs. Transfered to Account Number :"+addMoney.getToAccNumber();
 				
+	}
+	
+	public static void main(String myargs[]) {
+		
+		String pattern = "dd-MMM-yyyy HH:mm:ss";
+
+		// Create an instance of SimpleDateFormat used for formatting 
+		// the string representation of date according to the chosen pattern
+		DateFormat df = new SimpleDateFormat(pattern);
+
+		// Get the today date using Calendar object.
+		Date today = Calendar.getInstance().getTime();        
+		// Using DateFormat format method we can create a string 
+		// representation of a date with the defined format.
+		String todayAsString = df.format(today);
+
+		// Print it!
+		System.out.println("Today is: " + todayAsString);
+		
 	}
 
 	
