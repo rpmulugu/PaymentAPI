@@ -84,7 +84,7 @@ public class UserController {
 
 	}
 	
-	@PostMapping("/Transact")
+	@PostMapping("/transact")
 	public String addMoney(@RequestBody AddMoney addMoney) throws NumberFormatException, ResourceNotFoundException
 	{
 		String response=userService.addMoney(addMoney);
