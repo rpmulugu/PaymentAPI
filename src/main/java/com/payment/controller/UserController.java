@@ -25,6 +25,7 @@ import com.payment.repository.UserRepository;
 import com.payment.service.AccountService;
 import com.payment.service.TransactionService;
 import com.payment.service.UserService;
+import java.lang.RuntimeException;
 
 @RestController
 @RequestMapping("/api")
@@ -61,20 +62,20 @@ public class UserController {
 	}
 	
 	@GetMapping("/User")
-	public User getSelfUser() throws ResourceNotFoundException {
+	public Long getSelfUser() throws ResourceNotFoundException {
 		User user= userService.getSelfUser();
-		return user;
+		return user.getId();
 	}
 		
 	@PostMapping("/User")
-	public String addUser(@RequestBody User user) {
+	public Long addUser(@RequestBody User user) {
 		//int count=
 		User user1=userService.addUser(user);
 		 
-		 if (user1!=null) return "User Added successfully";//+user1.getAcct().getAcctNumber(); 
+		 if (user1!=null) return user1.getId();//+user1.getAcct().getAcctNumber(); 
 				 //ResponseEntity.noContent().build();
 		 
-		 else return "user addition failed";
+		 throw new RuntimeException("Error adding user");
 		/*
 		 * URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
 		 * "").buildAndExpand(user.getId()).toUri();
