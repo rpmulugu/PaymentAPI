@@ -52,13 +52,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String addMoney(AddMoney addMoney) throws NumberFormatException, ResourceNotFoundException {
-		String fromAccountNumber= addMoney.getFromAccNumber();
+		String fromAccNumber= addMoney.getFromAccNumber();
 		Long amount=addMoney.getTransAmount();
-		Account fromAccount=accRepo.findById(new Long(fromAccountNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
+		Account fromAccount=accRepo.findById(new Long(fromAccNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
 		long balance=fromAccount.getBalance();
 		
 		if(balance-amount<0) {
-			return "Insufficient Balance in Account :"+fromAccountNumber;
+			return "Insufficient Balance in Account :"+fromAccNumber;
 		}else if(amount==0) {
 			return "Amount should not be 0. Please enter some amount"; 
 		}
@@ -66,8 +66,8 @@ public class UserServiceImpl implements UserService {
 		long newbalance=balance-amount;
 		fromAccount.setBalance(newbalance);
 		
-		String toAccountNumber=addMoney.getToAccNumber();
-		Account toAccount=accRepo.findById(new Long(toAccountNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
+		String toAccNumber=addMoney.getToAccNumber();
+		Account toAccount=accRepo.findById(new Long(toAccNumber)).orElseThrow(() -> new com.payment.exception.ResourceNotFoundException("user not found for this id"));
 		long bal = toAccount.getBalance();
 		long creditedBal= bal+amount;
 		toAccount.setBalance(creditedBal);
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
 		accRepo.save(toAccount);
 
 		Transactions tr= new Transactions();
-		tr.setAccountNumber(toAccountNumber);
+		tr.setAccountNumber(toAccNumber);
 		tr.setBalance(creditedBal);
 		tr.setCredit(amount);
 		tr.setDebit(0L);
