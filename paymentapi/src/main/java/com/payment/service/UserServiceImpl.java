@@ -85,7 +85,9 @@ public class UserServiceImpl implements UserService {
 		tr.setTransactionStatus("Success");
 		
 		trRepo.save(tr);
-		return addMoney.getTransAmount() +" Rs. Transfered to Account Number :"+addMoney.getToAccNumber();
+		
+		System.out.println("Amount Transferred Sucessfully");
+		return addMoney.getTransAmount() +" Rs. Transfered to Account Number :"+addMoney.getToAccNumber();  
 				
 	}
 
