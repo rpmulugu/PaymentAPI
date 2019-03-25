@@ -27,29 +27,38 @@ public class AddMoney implements Serializable {
 	
 	@Column(name="description")
 	private String description;
-	
-	public String getToAccNumber() {
-		return toAccNumber;
-	}
-	public void setToAccNumber(String toAccountNumber) {
-		this.toAccNumber = toAccountNumber;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+
 	public String getFromAccNumber() {
 		return fromAccNumber;
 	}
-	public void setFromAccNumber(String fromAccountNumber) {
-		this.fromAccNumber = fromAccountNumber;
+
+	public void setFromAccNumber(String fromAccNumber) {
+		this.fromAccNumber = fromAccNumber;
 	}
+
+	public String getToAccNumber() {
+		return toAccNumber;
+	}
+
+	public void setToAccNumber(String toAccNumber) {
+		this.toAccNumber = toAccNumber;
+	}
+
 	public Long getTransAmount() {
 		return transAmount;
 	}
-	public void setTransAmount(Long amount) {
-		this.transAmount = amount;
+
+	public void setTransAmount(Long transAmount) {
+		this.transAmount = transAmount;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
 }
