@@ -1,7 +1,10 @@
 package com.payment.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,7 +84,12 @@ public class UserServiceImpl implements UserService {
 		tr.setBalance(creditedBal);
 		tr.setCredit(amount);
 		tr.setDebit(0L);
-		tr.setTransactionDate(""+System.currentTimeMillis());
+		
+		Date date = Calendar.getInstance().getTime();  
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+		String strDate = dateFormat.format(date);  
+	
+		tr.setTransactionDate(strDate);
 		tr.setTransactionDescription("Loan Amount");
 		tr.setTransactionStatus("Success");
 		
