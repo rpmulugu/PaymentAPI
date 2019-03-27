@@ -85,9 +85,9 @@ public class UserServiceImpl implements UserService {
 		tr.setCredit(amount);
 		tr.setDebit(0L);
 		
-		String pattern = "dd-MMM-yyyy HH:mm:ss";
+	//	String pattern = "dd-MMM-yyyy HH:mm:ss";
 		
-//		String pattern = "MM/dd/yyyy HH:mm:ss";
+		String pattern = "MM/dd/yyyy HH:mm:ss";
 
 		// Create an instance of SimpleDateFormat used for formatting 
 		// the string representation of date according to the chosen pattern
